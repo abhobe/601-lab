@@ -55,9 +55,45 @@ print(V2(1.1, 2.2) + V2(3.3, 4.4))
 
 class Polynomial:
     def __init__(self, c):
-        self.c = c
+        print(len(c))
+        self.c = [c[len(c) - 1 - i] for i in range(len(c))]
+        
+
+    def coeff(self, i):
+        return self.c[i]
     
     
-    
-    # def __add__(self, p):
+    def add(self, o):
+        n = []
+        if len(self.c) > len(o.c):
+            o.c += [0] * (len(self.c) - len(o.c))
+        else:
+            self.c += [0] * (len(o.c) - len(self.c))
+
+        for i in range(len(self.c)):
+            n.append(self.c[i] + o.c[i])
+        return n
+
+    def mul(self, o):
+        n = [0] * (len(self.c) + len(o.c) - 2)
+        if len(self.c) > len(o):
+            o.c += [0] * (len(self.c) * len(o.c))
+        else:
+            self.c += [0] * (len(o) * len(self.c))
+        
+        for i in self.c:
+            for j in o:
+                pass
+
+chubby = Polynomial([1, 2, 3])
+p2 = Polynomial([100,200])
+print(chubby.add(p2))
+
+
+
+        
+
+
+
+
         
